@@ -8,6 +8,8 @@ import {
 import Navbar from './components/Navbar'
 import Home from './components/Home'
 import About from './components/About'
+import Sign from './components/Sign'
+import FAQ from './components/FAQ'
 
 const App = () => {
   return (
@@ -16,6 +18,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/sign" element={<Sign />} />
+        <Route path="/faq" element={<FAQ />} />
       </Routes>
     </Router>
   )
