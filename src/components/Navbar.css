@@ -3,7 +3,8 @@
 nav {
   padding: 0.7rem;
   margin: 0;
-  background-color: aquamarine;
+  background-color: rgba(107, 152, 55, 0.7);
+  backdrop-filter: blur(4rem);
   display: flex;
   justify-content: space-between;
 }
