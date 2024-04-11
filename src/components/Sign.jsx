@@ -26,7 +26,12 @@ const Sign = () => {
             <h2>CUSTOMER LOGIN</h2>
             <div className="inpt">
               <MdEmail />
-              <input type="email" name="email" placeholder="Email ID" />
+              <input
+                type="email"
+                name="email"
+                placeholder="Email ID"
+                required
+              />
             </div>
             <div className="inpt">
               <FaUnlockAlt />
@@ -35,6 +40,7 @@ const Sign = () => {
                 name="password"
                 id="pswd"
                 placeholder="Password"
+                required
               />
             </div>
             <button type="submit" className="btn2">

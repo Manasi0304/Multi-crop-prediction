@@ -5,7 +5,7 @@ import Home from './components/Home'
 import About from './components/About'
 import Sign from './components/Sign'
 import FAQ from './components/FAQ'
-
+import InputForm from './components/InputForm'
 const App = () => {
   return (
     <Router>
@@ -15,6 +15,7 @@ const App = () => {
         <Route path="/about" element={<About />} />
         <Route path="/sign" element={<Sign />} />
         <Route path="/faq" element={<FAQ />} />
+        <Route path="/inputInterface" element={<InputForm />} />
       </Routes>
     </Router>
   )
