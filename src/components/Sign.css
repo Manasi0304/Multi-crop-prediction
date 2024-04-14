@@ -1,3 +1,16 @@
+.inputForm::before {
+  content: '';
+  background: url(../assets/inputForm-bg.jpg) no-repeat center center/cover;
+  position: absolute;
+  height: 105vh;
+  width: 100%;
+  display: block;
+  opacity: 0.6;
+  top: 0;
+  left: 0;
+  z-index: -2;
+}
+
 .registerForm {
   display: flex;
   height: 100vh;
@@ -9,7 +22,7 @@
 .formDiv {
   border-radius: 2rem;
   padding: 5rem;
-  background-color: rgba(107, 152, 55, 0.5);
+  background-color: rgba(107, 152, 55, 0.8);
 }
 
 .formDiv form {
@@ -30,18 +43,13 @@
 .formDiv form div input {
   font-size: 1.1rem;
   padding: 0.3rem;
-  /* Important */
   outline: none;
   border: none;
-  background-color: rgba(107, 152, 55, 0);
-  color: black;
-}
-.formDiv form div input:focus {
-  border: none;
+  background: none;
 }
 
 .inpt {
-  border-bottom: 2px solid rgb(99, 99, 99);
+  border-bottom: 2px solid rgb(63, 63, 63);
 }
 
 .btn2 {
@@ -55,10 +63,31 @@
   display: flex;
   justify-content: center;
   cursor: pointer;
+  text-decoration: none;
   align-items: center;
   transition: filter 0.5s;
 }
 
-.btn2:hover {
+.link {
+  background: black;
+  color: white;
+  border: 2px solid black;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  width: 95%;
+  margin: 0.9rem -0.2rem;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  text-decoration: none;
+  align-items: center;
+  transition: filter 0.5s;
+}
+
+.link:hover {
   filter: invert(100%);
+}
+
+::placeholder {
+  color: rgb(63, 63, 63); /* Change to your desired color */
 }
