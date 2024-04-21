@@ -4,7 +4,7 @@ import { FaUnlockAlt } from 'react-icons/fa'
 import './Sign.css'
 import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom'
-import { ToastContainer, toast } from 'react-toastify'
+import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 const Sign = () => {
@@ -20,15 +20,15 @@ const Sign = () => {
         password,
       })
       .then((res) => {
-        // Notify user of successful login
-        toast.success('Logged in successfully')
-
-        console.log(res.data)
         navigate('/inputInterface')
-        localStorage.setItem('token', res.data)
+        toast.success(res.data.message)
+        localStorage.setItem('token', res.data.data)
         window.location = '/inputInterface'
       })
-      .catch((err) => console.log(err))
+      .catch((err) => {
+        console.log(err)
+        toast.error(err.response.data.message)
+      })
   }
 
   return (
@@ -57,6 +57,9 @@ const Sign = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
+          <div id="linkDiv">
+            <Link to="/forgot-password">Forgot password?</Link>
+          </div>
           <button type="submit" className="btn2">
             LOGIN
           </button>
@@ -65,7 +68,6 @@ const Sign = () => {
           REGISTER
         </Link>
       </div>
-      <ToastContainer />
     </section>
   )
 }

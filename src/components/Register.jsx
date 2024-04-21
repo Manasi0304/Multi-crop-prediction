@@ -5,7 +5,7 @@ import { FaUser } from 'react-icons/fa'
 import { MdEmail } from 'react-icons/md'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import { ToastContainer, toast } from 'react-toastify'
+import { toast } from 'react-toastify'
 
 const Register = () => {
   const [firstName, setFirstName] = useState('')
@@ -14,10 +14,6 @@ const Register = () => {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const navigate = useNavigate()
-
-  const notify = () => {
-    toast('Registered')
-  }
 
   const submit = async (e) => {
     e.preventDefault()
@@ -30,19 +26,18 @@ const Register = () => {
         password,
       })
       .then((result) => {
-        notify
-        console.log(result)
-        notify
         navigate('/login')
-        notify
+        toast.success(result.data.message)
       })
-      .catch((err) => console.log(err))
+      .catch((err) => {
+        toast.error(err.response.data.message)
+      })
   }
 
   return (
     <section className="registerForm">
       <div className="formDiv">
-        <form action="POST" onSubmit={submit}>
+        <form onSubmit={submit}>
           <h2>CUSTOMER REGISTER</h2>
           <div className="inpt">
             <FaUser />
@@ -78,7 +73,6 @@ const Register = () => {
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
-
           <div className="inpt">
             <FaUnlockAlt />
             <input
@@ -95,7 +89,6 @@ const Register = () => {
             REGISTER
           </button>
         </form>
-        <ToastContainer />
         <Link to="/login" className="link">
           LOGIN
         </Link>

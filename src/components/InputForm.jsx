@@ -1,5 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './inputInterface.css'
+import { toast } from 'react-toastify'
+
 const InputForm = () => {
   const [nitrogen, setNitrogen] = useState('')
   const [phosphorus, setPhosphorus] = useState('')
@@ -11,14 +13,17 @@ const InputForm = () => {
 
   return (
     <section className="inputForm">
-      <video autoPlay loop muted playsInline className="bgvdeo">
-        <source src="../assets/inptVid.mp4" type="video/mp4" />
-      </video>
       <form className="Form">
         <div>
           <div className="inDiv">
             <label htmlFor="nitrogen">Nitrogen</label>
-            <input type="number" name="nitrogen" required className="ipForm" />
+            <input
+              type="number"
+              name="nitrogen"
+              onChange={(e) => setNitrogen(e.target.value)}
+              required
+              className="ipForm"
+            />
           </div>
           <div className="inDiv">
             <label htmlFor="phosphorus">Phosphorus</label>
@@ -26,6 +31,7 @@ const InputForm = () => {
               type="number"
               name="phosphorus"
               required
+              onChange={(e) => setPhosphorus(e.target.value)}
               className="ipForm"
             />
           </div>
@@ -33,7 +39,13 @@ const InputForm = () => {
         <div>
           <div className="inDiv">
             <label htmlFor="potassium">Potassium</label>
-            <input type="number" name="potassium" required className="ipForm" />
+            <input
+              type="number"
+              name="potassium"
+              onChange={(e) => setPotassium(e.target.value)}
+              required
+              className="ipForm"
+            />
           </div>
           <div className="inDiv">
             <label htmlFor="temperature">Temperature</label>
@@ -41,6 +53,7 @@ const InputForm = () => {
               type="number"
               name="temperature"
               required
+              onChange={(e) => setTemperature(e.target.value)}
               className="ipForm"
             />
           </div>
@@ -48,16 +61,34 @@ const InputForm = () => {
         <div>
           <div className="inDiv">
             <label htmlFor="humidity">Humidity</label>
-            <input type="number" name="humidity" required className="ipForm" />
+            <input
+              type="number"
+              name="humidity"
+              onChange={(e) => setHumidity(e.target.value)}
+              required
+              className="ipForm"
+            />
           </div>
           <div className="inDiv">
             <label htmlFor="pH">pH</label>
-            <input type="number" name="pH" required className="ipForm" />
+            <input
+              type="number"
+              name="pH"
+              onChange={(e) => setPH(e.target.value)}
+              required
+              className="ipForm"
+            />
           </div>
         </div>
         <div className="inDiv">
           <label htmlFor="rainfall">Rainfall</label>
-          <input type="number" name="rainfall" required className="ipForm" />
+          <input
+            type="number"
+            name="rainfall"
+            onChange={(e) => setRainfall(e.target.value)}
+            required
+            className="ipForm"
+          />
         </div>
         <button type="submit" className="btnRec">
           Get Recommendation
