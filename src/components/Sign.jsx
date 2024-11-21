@@ -1,40 +1,34 @@
-import React, { useState } from 'react'
-import { MdEmail } from 'react-icons/md'
-import { FaUnlockAlt } from 'react-icons/fa'
-import './Sign.css'
-import axios from 'axios'
-import { Link, useNavigate } from 'react-router-dom'
-import { toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
+import React, { useState } from 'react';
+import { MdEmail } from 'react-icons/md';
+import { FaUnlockAlt } from 'react-icons/fa';
+import './Sign.css';
+import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Sign = () => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const navigate = useNavigate()
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const submit = async (e) => {
-    e.preventDefault()
-    axios
-      .post('http://localhost:8001/login', {
-        email,
-        password,
-      })
-      .then((res) => {
-        navigate('/inputInterface')
-        toast.success(res.data.message)
-        localStorage.setItem('token', res.data.data)
-        window.location = '/inputInterface'
-      })
-      .catch((err) => {
-        console.log(err)
-        toast.error(err.response.data.message)
-      })
-  }
+    e.preventDefault();
+    try {
+      const res = await axios.post('http://localhost:8001/login', { email, password });
+      toast.success(res.data.message);
+      localStorage.setItem('token', res.data.data); // Store the actual token here
+      navigate('/inputInterface');
+    } catch (err) {
+      console.error(err); // Log error for debugging
+      toast.error(err.response?.data?.message || 'Login failed');
+    }
+  };
 
   return (
     <section className="registerForm">
       <div className="formDiv">
-        <form action="POST" onSubmit={submit}>
+        <form onSubmit={submit}>
           <h2>CUSTOMER LOGIN</h2>
           <div className="inpt">
             <MdEmail />
@@ -69,7 +63,7 @@ const Sign = () => {
         </Link>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Sign
+export default Sign;

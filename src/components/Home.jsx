@@ -6,8 +6,8 @@ const Home = () => {
   return (
     <div id="Home">
       <div id="mainHome">
-        <h1>CropCast</h1>
-        <h3>The Crop Prediction System!</h3>
+        <h1>Crop-Cast</h1>
+        <h3>Crop Prediction System !</h3>
         <button type="click" className="btn">
           <Link to="/login">Get started</Link>
           <FaArrowRight />
